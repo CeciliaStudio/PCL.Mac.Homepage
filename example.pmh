@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<homepage>
+    <MyCard title="可以折叠的卡片" isFoldable="true">
+        <text>小箭头动来动去很好玩，但修起来就不好玩了 :&#40;</text>
+    </MyCard>
+
+    <MyCard title="可以折叠的卡片" isFoldable="true" isFolded="false">
+        <text>可以折叠的卡片，但是默认展开</text>
+    </MyCard>
+
+    <MyCard title="不可折叠的卡片" isFoldable="false">
+        <text>awa</text>
+    </MyCard>
+
+    <MyCard>
+        <text>没有标题的卡片，所以无法被折叠</text>
+    </MyCard>
+
+    <MyCard title="实用工具" isFolded="false">
+        <HStack height="40">
+            <MyButton width="160">
+                <text>PCL.Mac GitHub</text>
+                <action type="openUrl">https://github.com/CeciliaStudio/PCL.Mac</action>
+            </MyButton>
+        </HStack>
+    </MyCard>
+
+    <MyCard title="游戏" isFolded="false">
+        <HStack height="40">
+            <MyButton width="120">
+                <text>Hypixel</text>
+                <action type="launch" instance="1.8.9 PVP" server="https://mc.hypixel.net" />
+                <action type="showHint" hintType="info">正在启动 1.8.9……</action>
+            </MyButton>
+        </HStack>
+    </MyCard>
+</homepage>

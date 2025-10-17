@@ -1,0 +1,64 @@
+{
+    "openUrl": {
+        "desc": "打开指定URL",
+        "body": {
+            "type": "string",
+            "desc": "目标URL，不能为本地URL"
+        }
+    },
+    "openFile": {
+        "desc": "打开本地文件",
+        "params": {
+            "showInParent": {
+                "type": "bool",
+                "desc": "是否在父文件夹中显示该文件，而不是打开该文件",
+                "default": false
+            }
+        },
+        "body": {
+            "type": "string",
+            "desc": "文件路径"
+        }
+    },
+    "switchPage": {
+        "desc": "切换页面",
+        "body": {
+            "type": "list[string]",
+            "desc": "页面路径"
+        }
+    },
+    "switchInstance": {
+        "desc": "切换当前实例",
+        "body": {
+            "type": "string",
+            "desc": "实例名"
+        }
+    },
+    "showHint": {
+        "desc": "显示提示",
+        "params": {
+            "hintType": {
+                "type": "info|finish|critical",
+                "desc": "提示类型"
+            }
+        },
+        "body": {
+            "type": "string",
+            "desc": "提示文本"
+        }
+    },
+    "launch": {
+        "desc": "启动游戏",
+        "params": {
+            "instance": {
+                "type": "string",
+                "desc": "实例名"
+            },
+            "server": {
+                "type": "string",
+                "desc": "游戏启动后加入服务器",
+                "default": "false"
+            }
+        }
+    }
+}
