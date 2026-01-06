@@ -1,50 +1,47 @@
 {
-    "openUrl": {
-        "desc": "打开指定 URL",
-        "body": {
-            "type": "string",
-            "desc": "目标 URL，不能为本地 URL"
+    "openURL": {
+        "desc": "使用浏览器打开 URL",
+        "params": {
+            "url": {
+                "type": "string",
+                "desc": "目标 URL"
+            }
         }
     },
     "openFile": {
         "desc": "打开本地文件",
         "params": {
+            "path": {
+                "type": "string",
+                "desc": "目标文件路径"
+            },
             "showInParent": {
                 "type": "bool",
                 "desc": "是否在父文件夹中显示该文件，而不是打开该文件",
                 "default": false
             }
-        },
-        "body": {
-            "type": "string",
-            "desc": "文件路径"
-        }
-    },
-    "switchPage": {
-        "desc": "切换页面",
-        "body": {
-            "type": "list[string]",
-            "desc": "页面路径"
         }
     },
     "switchInstance": {
         "desc": "切换当前实例",
-        "body": {
-            "type": "string",
-            "desc": "实例名"
+        "params": {
+            "id": {
+                "type": "string",
+                "desc": "目标实例 ID（约等于实例名）"
+            }
         }
     },
     "showHint": {
         "desc": "显示提示",
         "params": {
+            "content": {
+                "type": "string",
+                "desc": "提示文本"
+            },
             "hintType": {
                 "type": "info|finish|critical",
                 "desc": "提示类型"
             }
-        },
-        "body": {
-            "type": "string",
-            "desc": "提示文本"
         }
     },
     "launch": {

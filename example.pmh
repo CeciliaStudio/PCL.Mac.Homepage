@@ -23,7 +23,7 @@
     <MyCard title="实用工具" isFolded="false">
         <Stack orientation="horizontal" height="40">
             <MyButton label="打开 PCL.Mac GitHub" width="160">
-                <action type="openUrl">https://github.com/CeciliaStudio/PCL.Mac</action>
+                <openUrl url="https://github.com/CeciliaStudio/PCL.Mac"/>
             </MyButton>
         </Stack>
     </MyCard>
@@ -31,8 +31,8 @@
     <MyCard title="游戏" isFolded="false">
         <Stack orientation="horizontal" height="40">
             <MyButton width="120" label="Hypixel">
-                <action type="launch" instance="1.8.9" server="https://mc.hypixel.net" />
-                <action type="showHint" hintType="info">正在启动 1.8.9……</action>
+                <launch instance="1.8.9" server="https://mc.hypixel.net" />
+                <showHint hintType="info" content="正在启动 1.8.9……"/>
             </MyButton>
         </Stack>
     </MyCard>
