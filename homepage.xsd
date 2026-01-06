@@ -26,33 +26,88 @@
 
     <xs:group name="actions">
         <xs:choice>
-            <!-- openURL -->
+            <!-- openUrl -->
             <xs:element name="openUrl">
+                <xs:annotation>
+                    <xs:documentation>
+                        使用浏览器打开 URL。
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
-                    <xs:attribute name="url" type="xs:string" use="required"/>
+                    <xs:attribute name="url" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                目标 URL。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                 </xs:complexType>
             </xs:element>
             
             <!-- openFile -->
             <xs:element name="openFile">
+                <xs:annotation>
+                    <xs:documentation>
+                        打开本地文件。
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
-                    <xs:attribute name="path" type="xs:string" use="required"/>
-                    <xs:attribute name="showInParent" type="xs:boolean" use="optional" default="false"/>
+                    <xs:attribute name="path" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                目标文件路径。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="showInParent" type="xs:boolean" use="optional" default="false">
+                        <xs:annotation>
+                            <xs:documentation>
+                                是否在父文件夹中显示该文件，而不是打开该文件。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                 </xs:complexType>
             </xs:element>
 
             <!-- switchInstance -->
             <xs:element name="switchInstance">
+                <xs:annotation>
+                    <xs:documentation>
+                        切换当前实例。
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
-                    <xs:attribute name="id" type="xs:string" use="required"/>
+                    <xs:attribute name="id" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                目标实例 ID（约等于实例名）。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                 </xs:complexType>
             </xs:element>
 
             <!-- showHint -->
             <xs:element name="showHint">
+                <xs:annotation>
+                    <xs:documentation>
+                        显示提示。
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
-                    <xs:attribute name="content" type="xs:string" use="required"/>
+                    <xs:attribute name="content" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                提示文本。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                     <xs:attribute name="hintType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>
+                                提示类型，可选值：info、finish、critical。
+                            </xs:documentation>
+                        </xs:annotation>
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
                                 <xs:enumeration value="info"/>
@@ -66,9 +121,26 @@
 
             <!-- launch -->
             <xs:element name="launch">
+                <xs:annotation>
+                    <xs:documentation>
+                        启动游戏。
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
-                    <xs:attribute name="instance" type="xs:string" use="required"/>
-                    <xs:attribute name="server" type="xs:string" use="optional"/>
+                    <xs:attribute name="instance" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                实例名。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="server" type="xs:string" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>
+                                游戏启动后加入的服务器。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                 </xs:complexType>
             </xs:element>
         </xs:choice>
@@ -77,14 +149,33 @@
     <!-- Components -->
 
     <xs:element name="Stack">
+        <xs:annotation>
+            <xs:documentation>
+                用于垂直或水平排列多个组件的容器。
+            </xs:documentation>
+        </xs:annotation>
+
         <xs:complexType>
             <xs:group ref="content" minOccurs="1" maxOccurs="unbounded"/>
 
             <xs:attribute name="orientation" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        组件的排列方式。
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
-                        <xs:enumeration value="horizontal"/>
-                        <xs:enumeration value="vertical"/>
+                        <xs:enumeration value="horizontal">
+                            <xs:annotation>
+                                <xs:documentation>横向排列每个组件。</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="vertical">
+                            <xs:annotation>
+                                <xs:documentation>纵向排列每个组件。</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
@@ -94,49 +185,159 @@
     </xs:element>
 
     <xs:element name="Text">
+        <xs:annotation>
+            <xs:documentation>
+                普通文本组件。
+                若要创建超链接，请查看 <code>&lt;Link&gt;</code>组件。
+            </xs:documentation>
+        </xs:annotation>
+
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="size" type="positiveFloat" default="14"/>
+                    <xs:attribute name="size" type="positiveFloat" default="14">
+                        <xs:annotation>
+                            <xs:documentation>
+                                文本的大小，默认为 14px。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Link">
+        <xs:annotation>
+            <xs:documentation>
+                超链接组件。
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="size" type="positiveFloat" default="14">
+                        <xs:annotation>
+                            <xs:documentation>
+                                文本的大小，默认为 14px。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+
+                    <xs:attribute name="label" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+                                在界面上显示的文本，默认值为设置的 URL。
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="Image">
+        <xs:annotation>
+            <xs:documentation>
+                图片组件，支持 <code>https</code> 网络图片与 Data URL。
+            </xs:documentation>
+        </xs:annotation>
+        
         <xs:complexType>
-            <xs:attribute name="src" type="xs:string" use="required"/>
+            <xs:attribute name="src" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        图片的 URL，支持 <code>https</code> 与 <code>data</code>（Data URL）。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
             <xs:attribute name="width" type="positiveFloat"/>
             <xs:attribute name="height" type="positiveFloat"/>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="MyButton">
+        <xs:annotation>
+            <xs:documentation>
+                按钮组件。
+            </xs:documentation>
+        </xs:annotation>
+
         <xs:complexType>
             <xs:group ref="actions" minOccurs="0" maxOccurs="unbounded"/>
 
-            <xs:attribute name="label" type="xs:string"/>
+            <xs:attribute name="label" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        按钮上的文本。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
             <xs:attribute name="width" type="positiveFloat"/>
             <xs:attribute name="height" type="positiveFloat"/>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="MyCard">
+        <xs:annotation>
+            <xs:documentation>
+                卡片组件。
+            </xs:documentation>
+        </xs:annotation>
+
         <xs:complexType>
             <xs:group ref="content" minOccurs="1" maxOccurs="unbounded"/>
 
-            <xs:attribute name="title" type="xs:string"/>
-            <xs:attribute name="foldable" type="xs:boolean" default="true"/>
-            <xs:attribute name="folded" type="xs:boolean" default="false"/>
-            <xs:attribute name="hasTitle" type="xs:boolean" default="true"/>
+            <xs:attribute name="title" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        卡片的标题。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="foldable" type="xs:boolean" default="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        卡片是否可被折叠，为 <code>false</code> 时不显示右上角小箭头。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="folded" type="xs:boolean" default="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        卡片是否已被折叠（初始状态）。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="hasTitle" type="xs:boolean" default="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        卡片是否有标题。
+                        该值为 <code>false</code> 时，<code>title</code>、<code>foldable</code> 与 <code>folded</code> 均无效，卡片不显示标题也无法被折叠。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="MyHint">
+        <xs:annotation>
+            <xs:documentation>
+                提醒组件，功能与 PCL 的 <code>MyHint.xaml</code> 类似。
+            </xs:documentation>
+        </xs:annotation>
+
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attribute name="color" default="red">
+                        <xs:annotation>
+                            <xs:documentation>
+                                组件的颜色。
+                            </xs:documentation>
+                        </xs:annotation>
+
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
                                 <xs:enumeration value="blue"/>
@@ -159,8 +360,20 @@
                 <xs:element ref="MyCard"/>
             </xs:choice>
 
-            <xs:attribute name="author" type="xs:string" use="required"/>
-            <xs:attribute name="description" type="xs:string"/>
+            <xs:attribute name="author" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        主页作者。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="description" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        主页描述。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 </xs:schema>
