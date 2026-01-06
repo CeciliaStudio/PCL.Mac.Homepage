@@ -1,9 +1,9 @@
 {
     "openUrl": {
-        "desc": "打开指定URL",
+        "desc": "打开指定 URL",
         "body": {
             "type": "string",
-            "desc": "目标URL，不能为本地URL"
+            "desc": "目标 URL，不能为本地 URL"
         }
     },
     "openFile": {

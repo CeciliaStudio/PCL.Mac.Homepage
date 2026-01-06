@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://ceciliastudio.top"
+    xmlns="http://ceciliastudio.top"
+    elementFormDefault="qualified">
+
+    <!-- Types -->
+
+    <xs:simpleType name="positiveFloat">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:group name="content">
+        <xs:choice>
+            <xs:element ref="Text"/>
+            <xs:element ref="Stack"/>
+            <xs:element ref="MyButton"/>
+        </xs:choice>
+    </xs:group>
+
+    <!-- Layouts -->
+
+    <xs:element name="Stack">
+        <xs:complexType>
+            <xs:group ref="content"/>
+
+            <xs:attribute name="orientation" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="horizontal"/>
+                        <xs:enumeration value="vertical"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="width" type="positiveFloat"/>
+            <xs:attribute name="height" type="positiveFloat"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Components -->
+
+    <xs:element name="Text">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="size" type="positiveFloat" default="14"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="MyButton">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/> <!-- TODO -->
+            </xs:sequence>
+            <xs:attribute name="label" type="xs:string"/>
+            <xs:attribute name="width" type="positiveFloat"/>
+            <xs:attribute name="height" type="positiveFloat"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="MyCard">
+        <xs:complexType>
+            <xs:group ref="content"/>
+
+            <xs:attribute name="title" type="xs:string"/>
+            <xs:attribute name="isFoldable" type="xs:boolean" default="true"/>
+            <xs:attribute name="isFolded" type="xs:boolean" default="false"/>
+            <xs:attribute name="hasTitle" type="xs:boolean" default="true"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Root -->
+
+    <xs:element name="homepage">
+        <xs:complexType>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="MyCard"/>
+            </xs:choice>
+
+            <xs:attribute name="author" type="xs:string" use="required"/>
+            <xs:attribute name="description" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
