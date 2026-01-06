@@ -2,17 +2,25 @@
 <homepage xmlns="http://ceciliastudio.top"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://ceciliastudio.top homepage.xsd"
-    author="风花AnemoFlower">
+    author="风花AnemoFlower" description="示例主页">
 
-    <MyCard title="可以折叠的卡片" isFoldable="true">
+    <MyHint>
+        111
+    </MyHint>
+
+    <MyCard title="可以折叠的卡片" foldable="true">
         <Text>小箭头动来动去很好玩，但修起来就不好玩了 :&#40;</Text>
+        <Stack orientation="horizontal">
+            <Image src="https://ceciliastudio.top/favicon.ico"/>
+            <Text>Cecilia Studio</Text>
+        </Stack>
     </MyCard>
 
-    <MyCard title="可以折叠的卡片" isFoldable="true" isFolded="false">
+    <MyCard title="可以折叠的卡片" foldable="true" folded="false">
         <Text>可以折叠的卡片，但是默认展开</Text>
     </MyCard>
 
-    <MyCard title="不可折叠的卡片" isFoldable="false">
+    <MyCard title="不可折叠的卡片" foldable="false">
         <Text>awa</Text>
     </MyCard>
 
@@ -20,15 +28,15 @@
         <Text>没有标题的卡片，所以无法被折叠</Text>
     </MyCard>
 
-    <MyCard title="实用工具" isFolded="false">
+    <MyCard title="实用工具" folded="false">
         <Stack orientation="horizontal" height="40">
-            <MyButton label="打开 PCL.Mac GitHub" width="160">
+            <MyButton label="打开 PCL.Mac 的 GitHub 仓库" width="160">
                 <openUrl url="https://github.com/CeciliaStudio/PCL.Mac"/>
             </MyButton>
         </Stack>
     </MyCard>
 
-    <MyCard title="游戏" isFolded="false">
+    <MyCard title="游戏" folded="false">
         <Stack orientation="horizontal" height="40">
             <MyButton width="120" label="Hypixel">
                 <launch instance="1.8.9" server="https://mc.hypixel.net" />
