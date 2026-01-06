@@ -116,8 +116,8 @@
             <xs:group ref="content"/>
 
             <xs:attribute name="title" type="xs:string"/>
-            <xs:attribute name="isFoldable" type="xs:boolean" default="true"/>
-            <xs:attribute name="isFolded" type="xs:boolean" default="false"/>
+            <xs:attribute name="foldable" type="xs:boolean" default="true"/>
+            <xs:attribute name="folded" type="xs:boolean" default="false"/>
             <xs:attribute name="hasTitle" type="xs:boolean" default="true"/>
         </xs:complexType>
     </xs:element>
