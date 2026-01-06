@@ -102,7 +102,7 @@
                             </xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="hintType" use="optional">
+                    <xs:attribute name="type" use="optional">
                         <xs:annotation>
                             <xs:documentation>
                                 提示类型，可选值：info、finish、critical。
