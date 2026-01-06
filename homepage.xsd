@@ -17,6 +17,7 @@
             <xs:element ref="Text"/>
             <xs:element ref="Stack"/>
             <xs:element ref="MyButton"/>
+            <xs:element ref="MyHint"/>
         </xs:choice>
     </xs:group>
 
@@ -122,11 +123,30 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="MyHint">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="color" default="red">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="blue"/>
+                                <xs:enumeration value="red"/>
+                                <xs:enumeration value="yellow"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
     <!-- Root -->
 
     <xs:element name="homepage">
         <xs:complexType>
             <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="MyHint"/>
                 <xs:element ref="MyCard"/>
             </xs:choice>
 

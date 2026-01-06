@@ -4,6 +4,10 @@
     xsi:schemaLocation="http://ceciliastudio.top homepage.xsd"
     author="风花AnemoFlower" description="示例主页">
 
+    <MyHint>
+        111
+    </MyHint>
+
     <MyCard title="可以折叠的卡片" foldable="true">
         <Text>小箭头动来动去很好玩，但修起来就不好玩了 :&#40;</Text>
     </MyCard>
