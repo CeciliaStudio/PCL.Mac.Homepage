@@ -72,6 +72,8 @@
         </xs:choice>
     </xs:group>
 
+    <!-- Components -->
+
     <xs:element name="Stack">
         <xs:complexType>
             <xs:group ref="content"/>
@@ -89,8 +91,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- Components -->
-
     <xs:element name="Text">
         <xs:complexType>
             <xs:simpleContent>
@@ -104,7 +104,7 @@
     <xs:element name="MyButton">
         <xs:complexType>
             <xs:group ref="actions" minOccurs="0" maxOccurs="unbounded"/>
-            
+
             <xs:attribute name="label" type="xs:string"/>
             <xs:attribute name="width" type="positiveFloat"/>
             <xs:attribute name="height" type="positiveFloat"/>
