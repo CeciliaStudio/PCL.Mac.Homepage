@@ -10,6 +10,10 @@
 
     <MyCard title="可以折叠的卡片" foldable="true">
         <Text>小箭头动来动去很好玩，但修起来就不好玩了 :&#40;</Text>
+        <Stack orientation="horizontal">
+            <Image src="https://ceciliastudio.top/favicon.ico"/>
+            <Text>Cecilia Studio</Text>
+        </Stack>
     </MyCard>
 
     <MyCard title="可以折叠的卡片" foldable="true" folded="false">

@@ -14,8 +14,9 @@
 
     <xs:group name="content">
         <xs:choice>
-            <xs:element ref="Text"/>
             <xs:element ref="Stack"/>
+            <xs:element ref="Text"/>
+            <xs:element ref="Image"/>
             <xs:element ref="MyButton"/>
             <xs:element ref="MyHint"/>
         </xs:choice>
@@ -77,7 +78,7 @@
 
     <xs:element name="Stack">
         <xs:complexType>
-            <xs:group ref="content"/>
+            <xs:group ref="content" minOccurs="1" maxOccurs="unbounded"/>
 
             <xs:attribute name="orientation" use="required">
                 <xs:simpleType>
@@ -102,6 +103,14 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="Image">
+        <xs:complexType>
+            <xs:attribute name="src" type="xs:string" use="required"/>
+            <xs:attribute name="width" type="positiveFloat"/>
+            <xs:attribute name="height" type="positiveFloat"/>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="MyButton">
         <xs:complexType>
             <xs:group ref="actions" minOccurs="0" maxOccurs="unbounded"/>
@@ -114,7 +123,7 @@
 
     <xs:element name="MyCard">
         <xs:complexType>
-            <xs:group ref="content"/>
+            <xs:group ref="content" minOccurs="1" maxOccurs="unbounded"/>
 
             <xs:attribute name="title" type="xs:string"/>
             <xs:attribute name="foldable" type="xs:boolean" default="true"/>
